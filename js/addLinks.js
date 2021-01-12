@@ -13,6 +13,13 @@ function generateTemplate() {
 function renderTemplate() {
     document.getElementById("link-list").innerHTML = generateTemplate();
 }
+function showModal() {
+    document.getElementById("popup-background").setAttribute("style", "visibility:visible;")
+}
+function hideModal() {
+    document.getElementById("popup-background").setAttribute("style", "visibility:hidden;")
+}
 // 执行
 document.getElementById("link-list").innerHTML = template;
-document.getElementById("add-link-button").addEventListener("click",addLink);
+document.getElementById("add-link-button").addEventListener("click",showModal);
+document.getElementById("popup-content-button-cancle").addEventListener("click",hideModal);
