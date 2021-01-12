@@ -4,70 +4,7 @@
         <title>新的标签页
             
         </title>
-        <style>
-            .container {
-                display: flex;
-            }
-            img {
-                display: block;
-                max-width: 100%;
-            }
-            .a-upload {
-                padding: 4px 10px;
-                height: 20px;
-                width: 50px;
-                line-height: 20px;
-                position: relative;
-                cursor: pointer;
-                color: #888;
-                background: #fafafa;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                overflow: hidden;
-                display: inline-block;
-                text-decoration: none;
-            }
-            .a-upload input {
-                position: absolute;
-                font-size: 100px;
-                right: 0;
-                top: 0;
-                opacity: 0;
-                filter: alpha(opacity=0);
-                cursor: pointer;
-            }
-            .a-upload:hover {
-                color: #444;
-                background: #eee;
-                border-color: #ccc;
-            }
-            .search-box {
-                margin: auto;
-            }
-            #search-input {
-                width: 548px;
-                height: 44px;
-                font-size: 16px;
-                line-height: 44px;
-                float: left;
-                outline: none;
-                border: 2px solid #a7aab5;
-            }
-            #search-button {
-                width: 108px;
-                height: 44px;
-                font-size: 17px;
-                cursor: pointer;
-                color: #888;
-                background: #fafafa;
-                border: 2px solid #a7aab5;
-                border-radius: 4px;
-                overflow: hidden;
-                display: inline-block;
-                text-decoration: none;
-            }
-
-        </style>
+        <link href="./css/index.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="container">
         <a href="javascript:;" class="a-upload">
@@ -79,5 +16,6 @@
             <div style="clear:both;"></div>
         </div>
         <script src="./js/inputFile.js"></script>
+        <script src="./js/addLinks.js"></script>
     </body>
 </html>
