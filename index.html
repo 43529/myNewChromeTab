@@ -7,14 +7,21 @@
         <link href="./css/index.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="container">
+        <div class="menu">
         <a href="javascript:;" class="a-upload">
             <input  id="fileInput" type="file" accept="image/*">修改背景            
         </a>
+        <button id="add-link-button">添加链接</button>
+        </div>
+
         <div class="search-box">
             <input type="text" id="search-input"/>
             <button id="search-button">搜索</button>
             <div style="clear:both;"></div>
         </div>
+        <ul id="link-list">
+            <!-- <li>43529新标签页</li> -->
+        </ul>
         <script src="./js/inputFile.js"></script>
         <script src="./js/addLinks.js"></script>
     </body>
