@@ -22,6 +22,7 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^7.17.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "prettier": "2.2.1"
   }
 }
