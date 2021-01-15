@@ -7,28 +7,28 @@ function generateTemplate(newLink) {
   return template;
 }
 function renderTemplate() {
-  document.getElementById('link-list').innerHTML = template;
+  document.getElementById("link-list").innerHTML = template;
 }
 function showModal() {
   document
-      .getElementById('popup-background')
-      .setAttribute('style', 'visibility:visible;');
+    .getElementById("popup-background")
+    .setAttribute("style", "visibility:visible;");
 }
 function hideModal() {
   document
-      .getElementById('popup-background')
-      .setAttribute('style', 'visibility:hidden;');
+    .getElementById("popup-background")
+    .setAttribute("style", "visibility:hidden;");
 }
 function confirm() {
   document
-      .getElementById('popup-background')
-      .setAttribute('style', 'visibility:hidden;');
+    .getElementById("popup-background")
+    .setAttribute("style", "visibility:hidden;");
   const link = addNewLink();
   generateTemplate(link);
   renderTemplate();
 }
 function addNewLink() {
-  const link = document.querySelectorAll('.popup-content-item-input');
+  const link = document.querySelectorAll(".popup-content-item-input");
   const linkName = link[0].value;
   const linkUrl = link[1].value;
   const newLink =
@@ -43,10 +43,10 @@ function addNewLink() {
 }
 // -----------------------------------------------------------------------------
 renderTemplate();
-document.getElementById('add-link-button').addEventListener('click', showModal);
+document.getElementById("add-link-button").addEventListener("click", showModal);
 document
-    .getElementById('popup-content-button-cancle')
-    .addEventListener('click', hideModal);
+  .getElementById("popup-content-button-cancle")
+  .addEventListener("click", hideModal);
 document
-    .getElementById('popup-content-button-confirm')
-    .addEventListener('click', confirm);
+  .getElementById("popup-content-button-confirm")
+  .addEventListener("click", confirm);
