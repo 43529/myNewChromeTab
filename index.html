@@ -1,54 +1,56 @@
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <title>新的标签页
-
-    </title>
+  <head>
+    <meta charset="utf-8" />
+    <title>新的标签页</title>
     <link href="./css/index.css" rel="stylesheet" type="text/css" />
-</head>
+  </head>
 
-<body class="container">
+  <body class="container">
     <div class="menu">
-        <a href="javascript:;" class="a-upload">
-            <input id="fileInput" type="file" accept="image/*">修改背景
-        </a>
-        <button id="add-link-button">添加链接</button>
+      <a href="javascript:;" class="a-upload">
+        <input id="fileInput" type="file" accept="image/*" />修改背景
+      </a>
+      <button id="add-link-button">添加链接</button>
     </div>
 
     <div class="search-box">
-        <input type="text" id="search-input" />
-        <button id="search-button">搜索</button>
-        <div style="clear:both;"></div>
+      <input type="text" id="search-input" />
+      <button id="search-button">搜索</button>
+      <div style="clear: both"></div>
     </div>
     <ul id="link-list">
-        <!-- <li>43529新标签页</li> -->
+      <!-- <li>43529新标签页</li> -->
     </ul>
     <div id="popup-background">
-        <div id="popup">
-            <div id="popup-title">
-                添加链接
-            </div>
-            <div id="popup-divider"></div>
-            <div id="popup-content">
-                <div class="popup-content-item">
-                    <div>名称：</div>
-                    <input class="popup-content-item-input" type="text" name="linkname"/>
-                </div>
-                <div class="popup-content-item">
-                    <div>地址：</div>
-                    <input class="popup-content-item-input" type="text" name="linkurl"/>
-                </div>
-                <div id="popup-divider"></div>
-                <div id="popup-content-button">
-                    <button id="popup-content-button-confirm">添 加</button>
-                    <button id="popup-content-button-cancle">取 消</button>
-                </div>
-            </div>
+      <div id="popup">
+        <div id="popup-title">添加链接</div>
+        <div id="popup-divider"></div>
+        <div id="popup-content">
+          <div class="popup-content-item">
+            <div>名称：</div>
+            <input
+              class="popup-content-item-input"
+              type="text"
+              name="linkname"
+            />
+          </div>
+          <div class="popup-content-item">
+            <div>地址：</div>
+            <input
+              class="popup-content-item-input"
+              type="text"
+              name="linkurl"
+            />
+          </div>
+          <div id="popup-divider"></div>
+          <div id="popup-content-button">
+            <button id="popup-content-button-confirm">添 加</button>
+            <button id="popup-content-button-cancle">取 消</button>
+          </div>
         </div>
+      </div>
     </div>
     <script src="./js/inputFile.js"></script>
     <script src="./js/addLinks.js"></script>
-</body>
-
+  </body>
 </html>
