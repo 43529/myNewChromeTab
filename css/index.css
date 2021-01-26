@@ -128,7 +128,7 @@ img {
   line-height: 100%;
   font-size: 20px;
 }
-#popup-divider {
+.popup-divider {
   background-color: #dee2e6;
   height: 1px;
 }
@@ -173,7 +173,7 @@ img {
   cursor: pointer;
   outline: none;
 }
-#popup-content-button-cancle {
+#popup-content-button-cancel {
   background-color: #fff;
   color: #595959;
   border: 1px solid #d9d9d9;

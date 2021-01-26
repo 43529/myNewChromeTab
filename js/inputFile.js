@@ -1,13 +1,13 @@
-const changepic = function () {
+const changePic = function () {
   const reader = new FileReader();
-  f = document.getElementById("fileInput").files[0];
+  let f = document.getElementById("fileInput").files[0];
   reader.readAsDataURL(f);
-  reader.onload = function (e) {
+  reader.onload = function () {
     localStorage.background = this.result;
-    setBackgourndPic();
+    setBackgroundPic();
   };
 };
-const setBackgourndPic = function () {
+const setBackgroundPic = function () {
   if (localStorage.background) {
     document.body.style.backgroundImage =
       "url(" + localStorage.background + ")";
@@ -21,8 +21,8 @@ const search = function () {
   window.location.replace(href);
 };
 
-setBackgourndPic();
+setBackgroundPic();
 document.getElementById("fileInput").onchange = function () {
-  changepic(this);
+  changePic(this);
 };
 document.getElementById("search-button").onclick = search;

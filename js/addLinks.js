@@ -27,12 +27,12 @@ function saveDataToChrome() {
     console.log("添加成功");
   });
 }
-function generateTemplate(newLink) {
-  template += newLink;
-
-  // console.log(template);
-  return template;
-}
+// function generateTemplate(newLink) {
+//   template += newLink;
+//
+//   // console.log(template);
+//   return template;
+// }
 function renderTemplate() {
   let item = "";
   template = ``;
@@ -92,7 +92,7 @@ getDataFromChrome();
 console.log(userData)
 document.getElementById("add-link-button").addEventListener("click", showModal);
 document
-  .getElementById("popup-content-button-cancle")
+  .getElementById("popup-content-button-cancel")
   .addEventListener("click", hideModal);
 document
   .getElementById("popup-content-button-confirm")
