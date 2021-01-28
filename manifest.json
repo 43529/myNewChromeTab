@@ -17,7 +17,7 @@
       "default_title": "新的标签页"
     },
     "chrome_url_overrides": {
-        "newtab": "./index.html"
+        "newtab": "./dist/index.html"
     },
     "permissions": [
         "storage"
