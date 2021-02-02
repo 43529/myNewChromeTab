@@ -1,45 +1,34 @@
-// import $ from "C:/Users/34611/Documents/myNewChromeTab/node_modules/jquery/dist/jquery";
-// let $ = require('jquery');
+import $ from "jquery"
 let template = ``;
 let userData = {
   list: [],
 };
-// function output() {
-//   let li = $(".link-list").length;
-//   console.log(li);
-// }
-// output();
 // 初始化userData
 function initData() {
   userData = {
     list: [],
   };
 }
-//从chrome中读取和向chrome中保存数据
 function getDataFromChrome() {
-  // 注意这个函数是异步函数,暂时还没有什么问题，后续记得优化
-  chrome.storage.sync.get(null, (res) => {
-    if (res.list) {
-      userData = res;
-    } else {
-      initData();
-    }
-    console.log(userData)
-    renderTemplate();
-  });
+  return new Promise(resolve => {
+    chrome.storage.sync.get(null, res => {
+      if (res.list) {
+        userData = res;
+      } else {
+        initData();
+      }
+      resolve(res);
+    });
+  })
 }
 function saveDataToChrome() {
-  chrome.storage.sync.set(userData, function () {
-    console.log(userData);
-    console.log("添加成功");
-  });
+  return new Promise(resolve => {
+    chrome.storage.sync.set(userData, function () {
+      resolve("保存成功");
+    });
+  })
 }
-// function generateTemplate(newLink) {
-//   template += newLink;
-//
-//   // console.log(template);
-//   return template;
-// }
+
 function renderTemplate() {
   let item = "";
   template = ``;
@@ -49,10 +38,15 @@ function renderTemplate() {
       userData.list[i].url +
       `">` +
       userData.list[i].name +
-      `</a></li>`;
+      `</a><button>删除</button></li>`;
     template += item;
   }
   document.getElementById("link-list").innerHTML = template;
+  addId();
+  let list = document.getElementsByClassName("link-item");
+  for(let i=0;i<list.length;i++) {
+    list[i].lastChild.addEventListener("click", deleteLink);
+  }
 }
 function showModal() {
   document
@@ -69,34 +63,33 @@ function confirm() {
     .getElementById("popup-background")
     .setAttribute("style", "visibility:hidden;");
   addNewLink();
-  // generateTemplate(link);
   renderTemplate();
 }
 function addNewLink() {
   const link = document.querySelectorAll(".popup-content-item-input");
   const linkName = link[0].value;
   const linkUrl = link[1].value;
-  console.log(userData);
+  // console.log(userData);
   userData.list.push({
     name: linkName,
     url: linkUrl,
   });
-  saveDataToChrome();
-  // getDataFromChrome();
-  // const newLink =
-  //   `
-  //   <li class="link-item"><a href="` +
-  //   linkUrl +
-  //   `">` +
-  //   linkName +
-  //   `</a></li>
-  // `;
-  // return newLink;
+  saveDataToChrome().then(renderTemplate);
+}
+function deleteLink() {
+  userData.list.splice(this.parentNode.getAttribute("index"), 1);
+  saveDataToChrome()
+      .then(getDataFromChrome)
+      .then(renderTemplate);
+
+}
+function addId() {
+  $(".link-item").each(function () {
+    $(this).attr('index', $(this).index());
+  })
 }
 // -----------------------------------------------------------------------------
-// saveDataToChrome();
-getDataFromChrome();
-console.log(userData)
+getDataFromChrome().then(renderTemplate);
 document.getElementById("add-link-button").addEventListener("click", showModal);
 document
   .getElementById("popup-content-button-cancel")
@@ -104,3 +97,4 @@ document
 document
   .getElementById("popup-content-button-confirm")
   .addEventListener("click", confirm);
+
