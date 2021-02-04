@@ -1,5 +1,4 @@
-// 会用原生写的地方直接用了原生，暂时不会用原生写的部分用了jQuery，之后再改成原生，如此重复
-// import $ from "jquery"
+import $ from "jquery"
 let template = ``;
 let userData = {
   list: [],
@@ -29,7 +28,7 @@ function saveDataToChrome() {
     });
   })
 }
-// 渲染链接部分，绑定ID和删除button
+
 function renderTemplate() {
   let item = "";
   template = ``;
@@ -44,7 +43,10 @@ function renderTemplate() {
   }
   document.getElementById("link-list").innerHTML = template;
   addId();
-  addButton();
+  let list = document.getElementsByClassName("link-item");
+  for(let i=0;i<list.length;i++) {
+    list[i].lastChild.addEventListener("click", deleteLink);
+  }
 }
 function showModal() {
   document
@@ -82,16 +84,9 @@ function deleteLink() {
 
 }
 function addId() {
-  const link_list = document.getElementsByClassName("link-item")
-  for(let i=0;i<link_list.length;i++) {
-    link_list[i].setAttribute("index", i.toString());
-  }
-}
-function addButton() {
-  const list = document.getElementsByClassName("link-item");
-  for(let i=0;i<list.length;i++) {
-    list[i].lastChild.addEventListener("click", deleteLink);
-  }
+  $(".link-item").each(function () {
+    $(this).attr('index', $(this).index());
+  })
 }
 // -----------------------------------------------------------------------------
 getDataFromChrome().then(renderTemplate);
