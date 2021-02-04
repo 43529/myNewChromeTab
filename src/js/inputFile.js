@@ -1,45 +1,16 @@
-let userData = {
-  background: '',
-};
-function initData() {
-  userData = {
-    background: '',
-  };
-}
-function getDataFromChrome() {
-  return new Promise(resolve => {
-    chrome.storage.sync.get(null, res => {
-      if (res.background) {
-        userData = res;
-      } else {
-        initData();
-      }
-      resolve(res);
-    });
-  })
-}
-function saveDataToChrome() {
-  return new Promise(resolve => {
-    chrome.storage.sync.set(userData, function () {
-      resolve("背景设置成功");
-    });
-  })
-}
 const changePic = function () {
   const reader = new FileReader();
   let f = document.getElementById("fileInput").files[0];
   reader.readAsDataURL(f);
   reader.onload = function () {
-    userData.background = this.result;
-    saveDataToChrome().then(res => console.log(res));
+    localStorage.background = this.result;
     setBackgroundPic();
   };
 };
 const setBackgroundPic = function () {
-  getDataFromChrome().then(res => console.log(res));
-  if (userData.background) {
+  if (localStorage.background) {
     document.body.style.backgroundImage =
-      "url(" + userData.background + ")";
+      "url(" + localStorage.background + ")";
     document.body.style.backgroundSize = "100% 100%";
   }
 };
