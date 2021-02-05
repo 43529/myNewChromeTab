@@ -1,12 +1,14 @@
 const changePic = function () {
   const reader = new FileReader();
   let f = document.getElementById("fileInput").files[0];
-  reader.readAsDataURL(f);
+  reader.readAsArrayBuffer(f);
   reader.onload = function () {
-    localStorage.background = this.result;
+    let blob = new Blob([reader.result]);
+    localStorage.background = window.URL.createObjectURL(blob);
     setBackgroundPic();
   };
 };
+//
 const setBackgroundPic = function () {
   if (localStorage.background) {
     document.body.style.backgroundImage =
