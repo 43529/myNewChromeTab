@@ -34,11 +34,11 @@ function renderTemplate() {
   template = ``;
   for (let i = 0; i < userData.list.length; i++) {
     item =
-      `<li class="link-item"><a href="` +
+      `<li class="link-item"><button class="item-del-button">X</button><a href="` +
       userData.list[i].url +
       `">` +
       userData.list[i].name +
-      `</a><button>删除</button></li>`;
+      `</a></li>`;
     template += item;
   }
   document.getElementById("link-list").innerHTML = template;

@@ -8,7 +8,7 @@ const changePic = function () {
     setBackgroundPic();
   };
 };
-//
+
 const setBackgroundPic = function () {
   if (localStorage.background) {
     document.body.style.backgroundImage =
